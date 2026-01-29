@@ -30,6 +30,23 @@
   }, true);
 </script>
 
+<!-- DEBUG: select-top index -->
+<div style="position:fixed;bottom:10px;right:10px;background:#000;color:#fff;padding:6px 10px;z-index:99999;">
+  DEBUG: select-top updated
+</div>
+
+<script>
+  console.log("choice-button script loaded");
+
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.choice-button');
+    if (!btn) return;
+
+    console.log("navigate to:", btn.dataset.href);
+    window.location.assign(btn.dataset.href);
+  }, true);
+</script>
+
 
         <a href="../TOP/" class="top-link">TOPへ</a>
     </main>
