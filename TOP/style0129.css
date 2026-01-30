@@ -1,0 +1,666 @@
+/* 基本設定 */
+body {
+    margin: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #333c5e;
+    background-color: #fffaf5;
+    /* 全体的に薄いベージュ */
+    line-height: 1.8;
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: #333c5e;
+}
+
+.btn-main {
+    display: inline-block;
+    background-color: #8e7e72;
+    color: white;
+    padding: 15px 50px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.btn-main:hover {
+    background-color: #7a6a5e;
+    transform: translateY(-2px);
+}
+
+/* ヒーローエリア */
+.hero {
+    position: relative;
+    width: 100%;
+    /* height: 100vh; は削除します */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #fff;
+}
+
+/* 画像を背景ではなく、コンテンツとして配置 */
+.hero-image-wrapper {
+    width: 100%;
+    line-height: 0;
+    /* 画像の下にできる微小な隙間を消す */
+}
+
+.hero-img {
+    width: 100%;
+    height: auto;
+    /* 比率を保ったまま横幅いっぱいに広げる */
+    display: block;
+}
+
+/* 文字コンテンツを画像の中央に重ねる */
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%;
+}
+
+.intro{
+  position: relative;
+  padding: 80px 30px 180px;   /* 三角の深さぶん */
+  background: #fdf2e9;
+  overflow: hidden;
+}
+
+/* 下地：左右の白 */
+.intro::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:180px;
+  background:#fff;
+  z-index:1;
+}
+
+/* 中央：画面端から端まで届く逆三角形 */
+.intro::before{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:180px;
+  background:#fdf2e9;         /* クリーム */
+  z-index:2;
+
+  -webkit-clip-path: polygon(0 0, 100% 0, 50% 100%);
+          clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+/* 中のテキストを最前面に */
+.intro > *{
+  position: relative;
+  z-index: 3;
+}
+
+.check-list {
+    max-width: 500px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: auto;
+    margin-left: 35%;
+    list-style: none;
+    padding: 0;
+    width: fit-content;
+}
+
+.check-list li::before {
+    content: '・';
+    margin-right: 10px;
+}
+
+.comparison {
+    padding: 100px 0;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 背景の柔らかい光（左上と中央付近） */
+.comparison::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -5%;
+    width: 50%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 230, 200, 0.6) 0%, rgba(255, 255, 255, 0) 70%);
+    z-index: 1;
+}
+
+.comparison-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    /* 上下中央揃え */
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+/* テキストエリア */
+.comparison-text {
+    flex: 1;
+    text-align: center;
+    /* 文字は中央揃え */
+    padding-right: 20px;
+}
+
+.comparison-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #8e7e72;
+    /* 柔らかいブラウン */
+    margin-bottom: 30px;
+    border-bottom: none !important;
+    /* 他のh2の線が出る場合は消す */
+}
+
+.comparison-desc {
+    font-size: 1.1rem;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    color: #333c5e;
+}
+
+/* 画像エリア */
+.comparison-image {
+    flex: 1.2;
+    /* 画像の方を少し広く取る */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.comparison-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    /* 画像の左側を少しぼかして背景に馴染ませる手法 */
+    mask-image: linear-gradient(to left, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, black 90%, transparent 100%);
+}
+
+/* テーブル用のスタイル*/
+.comparison-chart-wrapper {
+    max-width: 900px;
+    margin: 60px auto 0;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    color: #333c5e;
+    /* 背景色は親要素のベージュを活かすため指定なし、または transparent */
+    background-color: transparent;
+}
+
+/* ヘッダー部分（Before/After） */
+.comparison-table th {
+    padding: 15px;
+    font-size: 1.2rem;
+    color: #8e7e72;
+    font-weight: 400;
+    /* 背景色はつけない */
+    background-color: transparent;
+}
+
+/* 各セルの基本設定 */
+.comparison-table td {
+    padding: 18px 20px;
+    border-bottom: 1px solid #eee;
+    width: 50%;
+}
+
+/* Before側：文字を左に寄せる設定 */
+.comparison-table td:first-child {
+    text-align: left;
+    /* 右寄せから左寄せに変更 */
+    padding-left: 40px;
+    /* 左側に余白を作って位置を調整 */
+}
+
+/* After側：中身のセルのみ背景色をつける */
+.bg-after {
+    background-color: #8e7e72;
+    color: #ffffff;
+    text-align: left;
+    padding-left: 40px !important;
+}
+
+/* 最後の行の線は消す */
+.comparison-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+    .comparison-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .comparison-text {
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+
+    .comparison-image img {
+        mask-image: none;
+        -webkit-mask-image: none;
+    }
+}
+
+/* 昇華プリント・グリッド */
+.feature-print {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #fdf2e9
+}
+
+.sample-grid {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.sample-grid img {
+    width: 30%;
+    max-width: 200px;
+    border-radius: 4px;
+}
+
+/* デザイン例 */
+
+.designs p{
+    text-align: center;
+}
+
+.designs{
+  position: relative;
+  padding: 100px 20px;
+  text-align: center;
+
+  /* 背景画像 */
+  background-image: url("images/羊背景.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 文字を読みやすくする白ベール */
+.designs::before{
+  content:"";
+  position:absolute;
+  inset: 0;
+  background: rgba(255, 250, 245, 0.88); /* クリーム寄り */
+  z-index: 1;
+}
+
+/* 中身を前面に */
+.designs > *{
+  position: relative;
+  z-index: 2;
+}
+
+/* シミュレーションエリア */
+.simulation {
+    background-color: #fdf2e9;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.sim-wrapper {
+    max-width: 1000px;
+    margin: 10px auto;
+}
+
+.sim-wrapper .sim-sub {
+    margin-bottom: 10px;
+    /* 「動画で見てみよう！」の下の隙間 */
+    font-size: 0.9rem;
+}
+
+.sim-wrapper h2 {
+    margin-top: 0;
+    /* 上の隙間を消す */
+    margin-bottom: 15px;
+    /* タイトルの下の隙間（下線がある場合はその距離） */
+    line-height: 1.2;
+    /* 行間自体も少しタイトに */
+    font-size: 1.8rem;
+}
+
+.sim-wrapper .sim-browser {
+    margin-top: 0;
+    /* 「※PCブラウザ〜」の上の隙間を消す */
+    margin-bottom: 30px;
+    /* 下のコンテンツ（動画/リスト）との距離 */
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.sim-flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* 上揃えで高さを合わせる */
+    gap: 60px;
+    margin: 50px auto;
+}
+
+/* --- 左側：縦長動画エリア --- */
+.sim-video-box {
+    flex: 0 0 260px;
+    /* 動画の幅を固定 */
+    position: relative;
+    z-index: 2;
+    transform: translateX(180px);
+}
+
+.phone-frame {
+    border: 8px solid #333;
+    border-radius: 30px;
+    overflow: hidden;
+    background: #000;
+    /* リストの高さ（約400-500px程度）に合わせて最大高さを制限 */
+    max-height: 520px;
+}
+
+.phone-frame video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fukidashi {
+    position: absolute;
+    bottom: 20px;
+    left: -40px;
+    /* 左側に飛び出すように配置 */
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 右側：リスト ＋ イラスト --- */
+.sim-content-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 20px;
+}
+
+/* 全体の間隔（gap）も少し狭めると、より中央にまとまります */
+.sim-flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    /* 60pxから20pxに縮小 */
+    max-width: 1000px;
+    margin: 50px auto;
+}
+
+.sim-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 80px 0 0;
+    z-index: 2;
+}
+
+.sim-list li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333c5e;
+    width: fit-content;
+}
+
+.sim-list li span {
+    line-height: 1.0;
+}
+
+.sim-icon-circle {
+    width: 50px;
+    margin-right: 20px;
+}
+
+.sim-icon-circle img {
+    width: 100%;
+    height: auto;
+}
+
+/* イラスト：リストのすぐ下、少し右寄りに配置 */
+.woman-illustration {
+    margin-top: 10px;
+    align-self: flex-start;
+    width: 150px;
+    padding-left: 400px;
+}
+
+.woman-illustration img {
+    width: 120%;
+    height: auto;
+}
+
+/* --- 下部ボタン --- */
+.btn-design {
+    display: inline-block;
+    background-color: #8e7e72;
+    color: #fff;
+    padding: 18px 80px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+    .sim-flex-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sim-content-box {
+        align-items: center;
+        text-align: center;
+    }
+
+    .woman-illustration {
+        align-self: center;
+        margin-left: 0;
+    }
+}
+
+/* FAQ */
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.faq-q {
+    font-weight: bold;
+    color: #333c5e;
+    display: flex;
+    padding-left: 25px ;
+}
+
+.faq-q::before {
+    margin-right: 10px;
+    color: #8e7e72;
+}
+
+.faq-a {
+    margin-top: 10px;
+    color: #666;
+    padding-left: 25px;
+}
+
+/* TOPへ */
+.page-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 100;
+    opacity: 0;           /* 最初は透明 */
+    visibility: hidden;    /* 最初はクリック不可 */
+    transition: all 0.3s; /* ふわっと出すためのアニメーション */
+}
+
+/* 表示された時のスタイル */
+.page-top.is-show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.page-top a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #333c5e;   /* お好みの色（リストのアイコン色など）に */
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    text-decoration: none;
+    font-size: 12px;
+    border-radius: 50%;    /* 丸くする */
+    font-weight: bold;
+}
+
+.page-top a:hover {
+    background: #8e7e72;   /* ホバー時の色 */
+}
+
+/* バナー*/
+.bottom-banner-container {
+    width: 40%;
+    margin: 60px auto; /* FAQとの間、フッターとの間に余白を作る */
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.bottom-banner {
+    display: block;
+    width: 100%;
+    transition: transform 0.3s ease; /* アニメーション用 */
+}
+
+.bottom-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px; /* 角を丸くすると柔らかい印象に */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* 軽く影をつけて浮かせる */
+}
+
+/* マウスを乗せた時の動き */
+.bottom-banner:hover {
+    transform: translateY(-5px); /* 少し上に浮き上がる */
+}
+
+/* フッター */
+/* フッター全体の背景と文字設定 */
+.footer {
+    background-color: #333c5e;
+    /* 画像の紺色 */
+    color: #ffffff;
+    padding: 40px 20px;
+    text-align: center;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* ナビゲーションリンク */
+.footer-nav {
+    margin-bottom: 20px;
+}
+
+.footer-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 0.85rem;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
+
+/* コピーライト */
+.copyright {
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+/* インスタアイコンと会社名のグループ */
+.footer-company {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* インスタアイコンのサイズ調整 */
+.footer-insta img {
+    width: 50px;
+    /* 画像の比率に合わせて大きめに設定 */
+    max-width: 80%;
+    /* スマホではみ出さないよう調整 */
+    height: auto;
+    border-radius: 10px;
+    /* アイコン自体の角丸に合わせて調整 */
+}
+
+/* 会社名 */
+.company-name {
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+}
