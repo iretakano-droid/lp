@@ -664,7 +664,6 @@ h2::after {
 .company-name {
     font-size: 1rem;
     letter-spacing: 0.05em;
->>>>>>> 0b42f1d (Update TOP css and add sheep background image)
 }
 /* =========================
    TOP: Responsive (CLEAN)
@@ -845,3 +844,59 @@ img, video {
     margin-left: auto;
     margin-right: auto;
 }
+/* =========================
+   FIX PACK v2（中央寄せ＋欠け防止）
+   ※style0129.css の一番最後に貼る
+   ========================= */
+
+/* 余白・幅計算のズレ防止 */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ここは hidden を一旦やめる（欠けの原因になる） */
+html, body { width: 100%; overflow-x: visible; }
+
+/* どれかがはみ出してたら強制的に折り返す（見切れ防止） */
+h1, h2, p, li, a { overflow-wrap: anywhere; word-break: break-word; }
+
+/* 各セクションは“画面いっぱい”＋左右パディング */
+.hero, .intro, .comparison, .feature-print, .designs, .simulation, .faq, .footer {
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* セクション内の本文ブロックを中央に揃える（最大幅） */
+.intro > *, .comparison-container, .feature-print > *, .designs > *, .simulation > *, .faq > * {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 見出しが長い時にスマホで欠けないように */
+h2 {
+  font-size: clamp(1.35rem, 5vw, 1.8rem);
+}
+
+/* チェックリスト：35%左マージンが残ってたら潰す */
+.check-list {
+  margin: 0 auto !important;
+  width: 100%;
+  max-width: 520px;
+}
+
+/* simulation：横ズレの根源を潰す（PCはそのまま/スマホだけ） */
+@media (max-width: 768px) {
+  .sim-video-box { transform: none !important; }
+  .sim-list { margin: 0 !important; }
+  .sim-content-box { align-items: center !important; padding-right: 0 !important; }
+
+  .woman-illustration {
+    padding-left: 0 !important;
+    margin: 12px auto 0 !important;
+    align-self: center !important;
+    width: 140px;
+    max-width: 45vw;
+  }
+  .woman-illustration img { width: 100% !important; }
+}
+
