@@ -666,3 +666,182 @@ h2::after {
     letter-spacing: 0.05em;
 >>>>>>> 0b42f1d (Update TOP css and add sheep background image)
 }
+/* =========================
+   TOP: Responsive (CLEAN)
+   ========================= */
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --- スマホ --- */
+@media (max-width: 768px) {
+
+  /* hero：縦積み */
+  .hero { display: block; }
+
+  .hero-content {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin: 0 auto;
+    padding: 18px 16px 28px;
+    text-align: left;
+    box-sizing: border-box;
+  }
+
+  .hero-content .btn-main {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    margin: 18px auto 0;
+    text-align: center;
+  }
+
+  /* intro：中身の左右余白 */
+  .intro { padding: 60px 16px 180px; }
+
+  .check-list {
+    max-width: 520px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 8px;
+    box-sizing: border-box;
+  }
+
+  /* comparison：縦積み */
+  .comparison-container {
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  .comparison-text { padding-right: 0; }
+
+  /* sample-grid：2列→1列 */
+  .sample-grid { flex-wrap: wrap; padding: 0 10px; }
+  .sample-grid img { width: calc(50% - 6px); max-width: none; }
+  
+  /* simulation：全部縦積み＆横ズレ殺す */
+  .sim-flex-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    margin: 28px auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  .sim-video-box {
+    flex: none;
+    width: min(320px, 90vw);
+    transform: none !important;
+  }
+
+  .sim-content-box {
+    align-items: center;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  .sim-list {
+    margin: 0;
+    width: 100%;
+    max-width: 360px;
+    padding: 0;
+  }
+
+  .sim-list li { width: 100%; }
+
+  .woman-illustration {
+    padding-left: 0 !important;
+    align-self: center;
+    width: 140px;
+    margin-top: 6px;
+  }
+
+  .btn-design {
+    width: min(360px, 90vw);
+    padding: 16px 0;
+    font-size: 1.15rem;
+  }
+
+  .bottom-banner-container {
+    width: 100%;
+    margin: 40px auto;
+    padding: 0 14px;
+    box-sizing: border-box;
+  }
+
+  .footer-nav a { display: inline-block; margin: 6px 10px; }
+}
+
+@media (max-width: 420px) {
+  .sample-grid img { width: 100%; }
+}
+
+/* チェックリストは左揃えのまま、ブロックだけ中央に */
+.intro .check-list {
+    margin: 0;
+    padding: 0;
+}
+
+/* ここから下：スマホはみ出し強制修正 */
+@media (max-width: 768px) {
+    .sim-video-box {
+        transform: none !important;
+    }
+
+    .woman-illustration {
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    .sim-content-box {
+        padding-right: 0 !important;
+    }
+
+    .sim-list {
+        margin-right: 0 !important;
+    }
+
+    /* 念のため：横はみ出し防止 */
+    .simulation,
+    .sim-wrapper,
+    .sim-flex-container {
+        width: 100%;
+        overflow-x: hidden;
+    }
+}
+
+/* === セクションを画面幅いっぱいにする === */
+.hero,
+.intro,
+.comparison,
+.feature-print,
+.designs,
+.simulation,
+.faq,
+.footer {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* === 中身を中央に寄せる共通ラッパ === */
+.hero-content,
+.intro>*,
+.comparison-container,
+.sim-wrapper,
+.faq-list {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
